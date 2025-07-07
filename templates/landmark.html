@@ -499,6 +499,69 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        .ai-info-section {
+            margin-top: 35px;
+            padding: 25px;
+            background: #f0f8ff;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .ai-info-section h3 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-info-section h3 .ai-badge {
+            font-size: 0.9rem;
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tips-section {
+            margin-top: 35px;
+            padding: 25px;
+            background: #fff3e0;
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .tips-section h3 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tips-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .tips-list li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .tips-list li i {
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: #4CAF50;
+        }
     </style>
 
     <script>
@@ -610,6 +673,60 @@
                             </div>
                             {% endfor %}
                         </div>
+                    </div>
+                    {% endif %}
+
+                    {% if landmark_info %}
+                    <div class="ai-info-section">
+                        <h3>
+                            <i class="fas fa-info-circle"></i> About this Landmark
+                            <span class="ai-badge"><i class="fas fa-robot"></i> AI Generated</span>
+                        </h3>
+                        <p><strong>Summary:</strong> {{ landmark_info.summary }}</p>
+                        
+                        {% if landmark_info.details %}
+                        <div>
+                            <p><strong>Historical Significance:</strong> 
+                               {% if landmark_info.details.historical_significance %}
+                                   {{ landmark_info.details.historical_significance }}
+                               {% else %}
+                                   Information not available
+                               {% endif %}
+                            </p>
+                            
+                            <p><strong>Key Architectural Features:</strong> 
+                               {% if landmark_info.details.key_architectural_features %}
+                                   {{ landmark_info.details.key_architectural_features }}
+                               {% else %}
+                                   Information not available
+                               {% endif %}
+                            </p>
+                            
+                            <p><strong>Cultural Importance:</strong> 
+                               {% if landmark_info.details.cultural_importance %}
+                                   {{ landmark_info.details.cultural_importance }}
+                               {% else %}
+                                   Information not available
+                               {% endif %}
+                            </p>
+                        </div>
+                        {% endif %}
+                        
+                        <p><strong>Interesting Fact:</strong> {{ landmark_info.interesting_fact }}</p>
+                    </div>
+                    {% endif %}
+
+                    {% if travel_tips %}
+                    <div class="tips-section">
+                        <h3>
+                            <i class="fas fa-lightbulb"></i> Travel Tips
+                            <span class="ai-badge"><i class="fas fa-robot"></i> AI Generated</span>
+                        </h3>
+                        <ul class="tips-list">
+                            {% for tip in travel_tips %}
+                            <li><i class="fas fa-check-circle"></i> {{ tip }}</li>
+                            {% endfor %}
+                        </ul>
                     </div>
                     {% endif %}
                 </div>
