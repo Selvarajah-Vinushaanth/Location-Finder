@@ -31,7 +31,7 @@ os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
 vision_client = vision.ImageAnnotatorClient()
 
 # Configure Gemini API
-GEMINI_API_KEY = "AIzaSyBnFQGu-XKiTc_KDwfqE2BChT8cGcukngc"
+GEMINI_API_KEY = "AIz########################fqE2BChT8cGcukngc"
 genai_client = genai.Client(api_key=GEMINI_API_KEY)
 
 def detect_landmark(image_path):
